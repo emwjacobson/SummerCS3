@@ -44,6 +44,7 @@ public class Assignment1 {
                 file_scanner.nextLine();
             i++;
         }
+        file_scanner.close();
         return i;
     }
     
@@ -79,13 +80,18 @@ public class Assignment1 {
     }
     
     public static void printChart(String[] names, String[] statuses, double[] salaries, double[] taxes, int num) {
+    	boolean calcAvgs = true;
+    	double[] netSalaries = new double[salaries.length];
+    	
         String format = "%-20s%-10s%-15s%-15s%-10s\n";
         System.out.printf(format, "Names", "Status", "Gross Salary", "Taxes", "Net Salary");
+        System.out.println("======================================================================");
         for(int i = 0; i < num; i++) {
             System.out.printf("%-20s", names[i]);
             if (statuses[i].equalsIgnoreCase("s") || statuses[i].equalsIgnoreCase("j")){
                 System.out.printf("%-10s", statuses[i].equalsIgnoreCase("j") ? "Joint" : "Single");
             } else {
+            	calcAvgs = false;
                 System.out.printf("%-10s", "Invalid Status");
                 System.out.println();
                 continue;
@@ -93,13 +99,32 @@ public class Assignment1 {
             if (salaries[i] >= 0) {
                 System.out.printf("%-15.2f", salaries[i]);
             } else {
+            	calcAvgs = false;
                 System.out.printf("%-15s", "Negative salary entered.");
                 System.out.println();
                 continue;
             }
             System.out.printf("%-15.2f", taxes[i]);
             System.out.printf("%-10.2f", salaries[i]-taxes[i]);
+            netSalaries[i] = salaries[i] - taxes[i];
             System.out.println();
         }
+
+        System.out.println("======================================================================");
+        System.out.printf("%-30s", "Averages");
+        if(calcAvgs) {
+        	System.out.printf("%-15.2f%-15.2f%-10.2f", calcAvg(salaries), calcAvg(taxes), calcAvg(netSalaries));
+        } else {
+        	System.out.printf("%-15s%-15s%-10s", "$XXXXXX.XX", "$XXXXXX.XX", "$XXXXXX.XX");
+        }
+    }
+    
+    public static double calcAvg(double[] arr) {
+    	if (arr.length == 0) return 0;
+    	double total = 0;
+    	for(double item : arr) {
+    		total += item;
+    	}
+    	return total/arr.length;
     }
 }
