@@ -2,6 +2,7 @@ package assignment.pkg1;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class Assignment1 {
@@ -26,6 +27,8 @@ public class Assignment1 {
             printChart(names, statuses, salaries, taxes, i);
         } catch(FileNotFoundException e) {
             System.out.printf("File %s was not found.", filename);
+        } catch(NoSuchElementException e) {
+            System.out.print("File is improperly formatted.");
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("An error has occured.");
