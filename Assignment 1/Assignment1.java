@@ -36,7 +36,7 @@ public class Assignment1 {
         
     }
 
-    public static int populateData(File file, String[] names, String[] statuses, double[] salaries) throws FileNotFoundException {
+    public static int populateData(File file, String[] names, String[] statuses, double[] salaries) throws FileNotFoundException, NoSuchElementException {
         Scanner file_scanner = new Scanner(file);
         int i = 0;
         while(file_scanner.hasNext()) {
@@ -95,6 +95,9 @@ public class Assignment1 {
                 System.out.printf("%-10s", statuses[i].equalsIgnoreCase("j") ? "Joint" : "Single");
             } else {
                 System.out.printf("%-10s", "Invalid Status");
+                // This prevents the values from being calculated in the averages.
+                salaries[i] = -1;
+                taxes[i] = -1;
                 System.out.println();
                 continue;
             }
@@ -102,6 +105,9 @@ public class Assignment1 {
                 System.out.printf("%-15.2f", salaries[i]);
             } else {
                 System.out.printf("%-15s", "Negative salary entered.");
+                // This prevents the values from being calculated in the averages.
+                salaries[i] = -1;
+                taxes[i] = -1;
                 System.out.println();
                 continue;
             }
