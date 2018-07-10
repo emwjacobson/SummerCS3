@@ -2,6 +2,7 @@ package assignment.pkg1;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
@@ -19,6 +20,10 @@ public class Assignment1 {
         
         try {
             int i = populateData(file, names, statuses, salaries);
+            if (i < 0) {
+                System.out.println("Empty data file entered.");
+                return;
+            }
             
             for(int j=0; j<i; j++) {
                 taxes[j] = calculateTaxes(statuses[j], salaries[j]);
@@ -48,6 +53,9 @@ public class Assignment1 {
             i++;
         }
         file_scanner.close();
+        if (i == 0) {
+            return -1;
+        }
         return i;
     }
     
