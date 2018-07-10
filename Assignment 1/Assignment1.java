@@ -80,7 +80,7 @@ public class Assignment1 {
     }
     
     public static void printChart(String[] names, String[] statuses, double[] salaries, double[] taxes, int num) {
-    	boolean calcAvgs = true;
+//    	boolean calcAvgs = true;
     	double[] netSalaries = new double[salaries.length];
     	
         String format = "%-20s%-10s%-15s%-15s%-10s\n";
@@ -91,7 +91,6 @@ public class Assignment1 {
             if (statuses[i].equalsIgnoreCase("s") || statuses[i].equalsIgnoreCase("j")){
                 System.out.printf("%-10s", statuses[i].equalsIgnoreCase("j") ? "Joint" : "Single");
             } else {
-            	calcAvgs = false;
                 System.out.printf("%-10s", "Invalid Status");
                 System.out.println();
                 continue;
@@ -99,7 +98,6 @@ public class Assignment1 {
             if (salaries[i] >= 0) {
                 System.out.printf("%-15.2f", salaries[i]);
             } else {
-            	calcAvgs = false;
                 System.out.printf("%-15s", "Negative salary entered.");
                 System.out.println();
                 continue;
@@ -112,19 +110,19 @@ public class Assignment1 {
 
         System.out.println("======================================================================");
         System.out.printf("%-30s", "Averages");
-        if(calcAvgs) {
-        	System.out.printf("%-15.2f%-15.2f%-10.2f", calcAvg(salaries), calcAvg(taxes), calcAvg(netSalaries));
-        } else {
-        	System.out.printf("%-15s%-15s%-10s", "$XXXXXX.XX", "$XXXXXX.XX", "$XXXXXX.XX");
-        }
+        System.out.printf("%-15.2f%-15.2f%-10.2f", calcAvg(salaries), calcAvg(taxes), calcAvg(netSalaries));
     }
     
     public static double calcAvg(double[] arr) {
     	if (arr.length == 0) return 0;
     	double total = 0;
+        int num_items = 0;
     	for(double item : arr) {
+            if(item > 0) {
     		total += item;
+                num_items++;
+            }
     	}
-    	return total/arr.length;
+    	return total/num_items;
     }
 }
