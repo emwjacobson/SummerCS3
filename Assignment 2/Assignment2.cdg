@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Assignment2">
+  <ClassDiagramComponents>
+    <Class name="Course" package="" visibility="public" xPosition="463.0" yPosition="73.0">
+      <Fields>
+        <Field name="name" type="String" visibility="private"/>
+        <Field name="grade" type="String" visibility="private"/>
+        <Field name="num_units" type="int" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="name"/>
+          <Argument type="String" name="grade"/>
+          <Argument type="int" name="num_units"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getName" returnType="String" visibility="public"/>
+        <Method name="getGrade" returnType="String" visibility="public"/>
+        <Method name="getNumUnits" returnType="int" visibility="public"/>
+        <Method name="setData" returnType="int" visibility="public">
+          <Argument type="String" name="name"/>
+          <Argument type="String" name="grade"/>
+          <Argument type="int" name="num_units"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Student" package="" visibility="private" xPosition="58.0" yPosition="73.0">
+      <Fields>
+        <Field name="name" type="String" visibility="private"/>
+        <Field name="id" type="String" visibility="private"/>
+        <Field name="classes" type="Course[]" visibility="private"/>
+        <Field name="average" type="double" visibility="private"/>
+        <Field name="grade" type="String" visibility="private"/>
+        <Field name="units_taken" type="int" visibility="private"/>
+        <Field name="units_completed" type="int" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="name"/>
+          <Argument type="String" name="id"/>
+          <Argument type="Course[]" name="classes"/>
+        </Constructor>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="setData" returnType="void" visibility="public">
+          <Argument type="String" name="name"/>
+          <Argument type="String" name="id"/>
+          <Argument type="Course[]" name="classes"/>
+        </Method>
+        <Method name="CalcAvg" returnType="void" visibility="private"/>
+        <Method name="calcGrade" returnType="void" visibility="private"/>
+        <Method name="calcUnits" returnType="void" visibility="private"/>
+        <Method name="getName" returnType="String" visibility="public"/>
+        <Method name="getId" returnType="String" visibility="public"/>
+        <Method name="getAverage" returnType="double" visibility="public"/>
+        <Method name="getGrade" returnType="String" visibility="public"/>
+        <Method name="getUnitsTaken" returnType="int" visibility="public"/>
+        <Method name="getUnitsCompleted" returnType="int" visibility="public"/>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="classes" source="Student" target="Course" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
