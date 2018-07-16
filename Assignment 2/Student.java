@@ -18,9 +18,10 @@ public class Student {
     }
 
     public void setData(String name, String id, Course[] classes) {
-        this.name = name;
-        this.id = id;
-        this.classes = classes;
+        // TODO: Error checking
+        this.name = name == null ? "" : name;
+        this.id = id == null ? "" : id;
+        this.classes = classes == null ? new Course[0] : classes;
         calcAvg();
         calcGrade();
         calcUnits();
@@ -32,24 +33,20 @@ public class Student {
                 return;
         }
         double total = 0;
-        for(int i = 0; i < this.classes.length; i++) {
-            switch(classes[i].getGrade()) {
-            case "A":
-            case "a":
-                total += 4;
-                break;
-            case "B":
-            case "b":
-                total += 3;
-                break;
-            case "C":
-            case "c":
-                total += 2;
-                break;
-            case "D":
-            case "d":
-                total += 1;
-                break;
+        for (Course classe : this.classes) {
+            switch (classe.getGrade()) {
+                case "A":
+                case "a":
+                    total++;
+                case "B":
+                case "b":
+                    total++;
+                case "C":
+                case "c":
+                    total++;
+                case "D":
+                case "d":
+                    total++;
             }
         }
         this.average = total/this.classes.length;

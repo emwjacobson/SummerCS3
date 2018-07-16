@@ -22,8 +22,9 @@ public class Course {
     }
 
     public void setData(String name, String grade, int num_units) {
-        this.name = name;
-        this.grade = grade;
-        this.num_units = num_units;
+        // TODO: Error checking
+        this.name = name == null ? "" : name;
+        this.grade = grade == null ? "" : grade;
+        this.num_units = num_units < 0 ? 0 : num_units;
     }
 }
