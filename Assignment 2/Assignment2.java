@@ -7,9 +7,7 @@ import java.util.Scanner;
 public class Assignment2 {
 	/*
 	 * TODO:
-	 * Check input grade to make sure its in range, if not then crash? reprompt?
-	 *   "     "   units to make sure not negative, "   "   "     "       "
-	 * Make sure num_classes is positive
+	 * Add error checking on reading from file? What should happen if invalid?
 	 */
 	
 	public static Scanner scnr;
@@ -74,21 +72,47 @@ public class Assignment2 {
 		String name = scnr.next();
 		System.out.print("Enter student ID(###-##-####): ");
 		String id = scnr.next();
-		System.out.print("Number of classes: ");
-		int num_classes = scnr.nextInt();
+		
+		int num_classes;
+		do {
+			System.out.print("Number of classes: ");
+			num_classes = scnr.nextInt();
+			if (num_classes < 0)
+				System.out.println("Please enter a positive amount of classes.");
+		} while(num_classes < 0);
+		
 		Course[] classes = new Course[num_classes];
 		for(int i=0; i<num_classes;i++) {
 			System.out.print("Name of course " + (i+1) + ": ");
 			String cname = scnr.next();
-			System.out.print("Grade in course " + (i+1) + "(A-F): ");
-			String cgrade = scnr.next();
-			System.out.print("Course " + (i+1) + " units: ");
-			int cunits = scnr.nextInt();
+			
+			String cgrade;
+			do {
+				System.out.print("Grade in course " + (i+1) + "(A-F): ");
+				cgrade = scnr.next();
+				if (!isValidGrade(cgrade))
+					System.out.println("Please enter a valid grade.");
+			} while(!isValidGrade(cgrade));
+			
+			int cunits;
+			do {
+				System.out.print("Course " + (i+1) + " units: ");
+				cunits = scnr.nextInt();
+				if (cunits < 0)
+					System.out.println("Please enter positive course units.");
+			} while(cunits < 0);
+			
 			classes[i] = new Course(cname, cgrade, cunits);
 		}
 		
 		tempS.setData(name, id, classes);
 		return tempS;
+	}
+	
+	public static boolean isValidGrade(String grade) {
+		if (grade.equalsIgnoreCase("A") || grade.equalsIgnoreCase("B") || grade.equalsIgnoreCase("C") || grade.equalsIgnoreCase("D") || grade.equalsIgnoreCase("F"))
+			return true;
+		return false;
 	}
 
 	private static void printStudents(Student ...students) {
