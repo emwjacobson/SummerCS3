@@ -6,11 +6,6 @@ import java.io.PrintWriter;
 import java.util.Scanner;
 
 public class Assignment2 {
-    /*
-     * TODO:
-     * Add error checking on reading from file? What should happen if invalid?
-     * Add error checking inside of student and course?
-     */
 
     public static Scanner scnr;
 

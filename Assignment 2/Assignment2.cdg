@@ -2,31 +2,7 @@
 
 <ClassDiagram name="Assignment2">
   <ClassDiagramComponents>
-    <Class name="Course" package="" visibility="public" xPosition="474.0" yPosition="39.0">
-      <Fields>
-        <Field name="name" type="String" visibility="private"/>
-        <Field name="grade" type="String" visibility="private"/>
-        <Field name="num_units" type="int" visibility="private"/>
-      </Fields>
-      <Constructors>
-        <Constructor visibility="public">
-          <Argument type="String" name="name"/>
-          <Argument type="String" name="grade"/>
-          <Argument type="int" name="num_units"/>
-        </Constructor>
-      </Constructors>
-      <Methods>
-        <Method name="getName" returnType="String" visibility="public"/>
-        <Method name="getGrade" returnType="String" visibility="public"/>
-        <Method name="getNumUnits" returnType="int" visibility="public"/>
-        <Method name="setData" returnType="int" visibility="public">
-          <Argument type="String" name="name"/>
-          <Argument type="String" name="grade"/>
-          <Argument type="int" name="num_units"/>
-        </Method>
-      </Methods>
-    </Class>
-    <Class name="Student" package="" visibility="private" xPosition="38.0" yPosition="39.0">
+    <Class name="Student" package="" visibility="public" xPosition="94.0" yPosition="73.0">
       <Fields>
         <Field name="name" type="String" visibility="private"/>
         <Field name="id" type="String" visibility="private"/>
@@ -50,7 +26,7 @@
           <Argument type="String" name="id"/>
           <Argument type="Course[]" name="classes"/>
         </Method>
-        <Method name="CalcAvg" returnType="void" visibility="private"/>
+        <Method name="calcAvg" returnType="void" visibility="private"/>
         <Method name="calcGrade" returnType="void" visibility="private"/>
         <Method name="calcUnits" returnType="void" visibility="private"/>
         <Method name="getName" returnType="String" visibility="public"/>
@@ -59,6 +35,35 @@
         <Method name="getGrade" returnType="String" visibility="public"/>
         <Method name="getUnitsTaken" returnType="int" visibility="public"/>
         <Method name="getUnitsCompleted" returnType="int" visibility="public"/>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Course" package="" visibility="public" xPosition="646.0" yPosition="145.0">
+      <Fields>
+        <Field name="name" type="String" visibility="private"/>
+        <Field name="grade" type="string" visibility="private"/>
+        <Field name="num_units" type="int" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="name"/>
+          <Argument type="String" name="grade"/>
+          <Argument type="int" name="num_units"/>
+        </Constructor>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getName" returnType="String" visibility="public"/>
+        <Method name="getGrade" returnType="String" visibility="public"/>
+        <Method name="getNumUnits" returnType="int" visibility="public"/>
+        <Method name="setData" returnType="void" visibility="public">
+          <Argument type="String" name="name"/>
+          <Argument type="String" name="grade"/>
+          <Argument type="int" name="num_units"/>
+        </Method>
+        <Method name="isGradeValid" returnType="boolean" visibility="private">
+          <Argument type="String" name="g"/>
+        </Method>
         <Method name="toString" returnType="String" visibility="public"/>
       </Methods>
     </Class>

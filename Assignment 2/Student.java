@@ -18,7 +18,6 @@ public class Student {
     }
 
     public void setData(String name, String id, Course[] classes) {
-        // TODO: Error checking
         this.name = name == null ? "" : name;
         this.id = id == null ? "" : id;
         this.classes = classes == null ? new Course[0] : classes;
@@ -27,6 +26,9 @@ public class Student {
         calcUnits();
     }
 
+    /**
+     * Calculated the students average score.
+     */
     private void calcAvg() {
         if (this.classes == null || this.classes.length == 0) {
                 this.average = 0;
@@ -64,6 +66,9 @@ public class Student {
             this.grade = "D";
     }
 
+    /**
+     * Calculated the number of units taken and completed.
+     */
     private void calcUnits() {
         if (this.classes == null || this.classes.length == 0) {
             this.units_taken = 0;

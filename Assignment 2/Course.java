@@ -22,7 +22,6 @@ public class Course {
     }
 
     public void setData(String name, String grade, int num_units) {
-        // TODO: Error checking
         this.name = name == null ? "" : name;
         this.grade = isGradeValid(grade) ? "" : grade;
         this.num_units = num_units < 0 ? 0 : num_units;
@@ -32,5 +31,9 @@ public class Course {
     	if (g.length() != 1) return false;
     	String validGrades = "ABCDFabcdf";
     	return validGrades.contains(g);
+    }
+    
+    public String toString() {
+    	return String.format("Name: %s  Grade: %s  Units: %s", this.name, this.grade, this.num_units);
     }
 }
