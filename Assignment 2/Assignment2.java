@@ -2,7 +2,9 @@ package assignment2;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Assignment2 {
@@ -20,6 +22,12 @@ public class Assignment2 {
         }
         catch (FileNotFoundException e) {
             System.out.println("File not found.");
+        }
+        catch (IOException e) {
+            System.out.println("IOException occured.");
+        }
+        catch (InputMismatchException e) {
+            System.out.println("Invalid item entered.");
         }
         catch (Exception e) {
             System.out.println("An unexpected error occurred: ");
@@ -62,7 +70,7 @@ public class Assignment2 {
         return new Student(first + " " + last, id, courses);
     }
 
-    private static Student studentFromInput() {
+    private static Student studentFromInput() throws IOException, InputMismatchException {
         Student tempS = new Student();
         System.out.print("Enter student name: ");
         String name = scnr.nextLine();
