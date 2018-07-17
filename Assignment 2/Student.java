@@ -16,6 +16,10 @@ public class Student {
     public Student(String name, String id, Course[] classes) {
         this.setData(name, id, classes);
     }
+    
+    public Student(Student other) {
+        this.setData(other.name, other.id, other.classes.clone());
+    }
 
     public void setData(String name, String id, Course[] classes) {
         this.name = name == null ? "" : name;
@@ -99,8 +103,14 @@ public class Student {
 
     public int getUnitsCompleted() { return this.units_completed; }
 
+    @Override
     public String toString() {
         return String.format("%-20s%-15s%-15d%-20d%-15.2f", this.name, this.id, this.units_taken, this.units_completed, this.average);
+    }
+    
+    public boolean equals(Student other) {
+        if (other == this) return true;
+        return other.name.equals(name) && other.id.equals(id) && other.average == average && other.grade.equals(grade) && other.units_taken == units_taken && other.units_completed == units_completed;
     }
 
 }

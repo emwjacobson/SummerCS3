@@ -18,6 +18,9 @@
           <Argument type="String" name="id"/>
           <Argument type="Course[]" name="classes"/>
         </Constructor>
+        <Constructor visibility="public">
+          <Argument type="Student" name="other"/>
+        </Constructor>
         <Constructor visibility="public"/>
       </Constructors>
       <Methods>
@@ -49,6 +52,9 @@
           <Argument type="String" name="name"/>
           <Argument type="String" name="grade"/>
           <Argument type="int" name="num_units"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="Course" name="other"/>
         </Constructor>
         <Constructor visibility="public"/>
       </Constructors>

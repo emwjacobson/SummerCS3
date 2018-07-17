@@ -4,9 +4,17 @@ public class Course {
     private String name;
     private String grade;
     private int num_units;
+    
+    public Course() {
+        this.setData(null, null, 0);
+    }
 
     public Course(String name, String grade, int num_units) {
         this.setData(name, grade, num_units);
+    }
+    
+    public Course(Course other) {
+        this.setData(other.name, other.grade, other.num_units);
     }
 
     public String getName() {
@@ -33,7 +41,14 @@ public class Course {
     	return validGrades.contains(g);
     }
     
+    @Override
     public String toString() {
     	return String.format("Name: %s  Grade: %s  Units: %s", this.name, this.grade, this.num_units);
     }
+    
+    public boolean equals(Course other) {
+        if (other == this) return true;
+        return other.name == name && other.grade == grade && other.num_units == num_units;
+    }
+    
 }
