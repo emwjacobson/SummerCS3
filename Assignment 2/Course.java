@@ -24,7 +24,13 @@ public class Course {
     public void setData(String name, String grade, int num_units) {
         // TODO: Error checking
         this.name = name == null ? "" : name;
-        this.grade = grade == null ? "" : grade;
+        this.grade = isGradeValid(grade) ? "" : grade;
         this.num_units = num_units < 0 ? 0 : num_units;
+    }
+    
+    private boolean isGradeValid(String g) {
+    	if (g.length() != 1) return false;
+    	String validGrades = "ABCDFabcdf";
+    	return validGrades.contains(g);
     }
 }
