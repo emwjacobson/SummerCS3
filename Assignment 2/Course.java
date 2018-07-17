@@ -48,7 +48,7 @@ public class Course {
     
     public boolean equals(Course other) {
         if (other == this) return true;
-        return other.name == name && other.grade == grade && other.num_units == num_units;
+        return other.name.equals(name) && other.grade.equals(grade) && other.num_units == num_units;
     }
     
 }
