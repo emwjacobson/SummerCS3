@@ -5,4 +5,4 @@ A 5
 English 1A
 B 4
 English 1B
-F 4
+D 5
