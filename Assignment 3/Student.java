@@ -1,7 +1,8 @@
 package assignment3;
 
 public class Student {
-    private String name;
+    private String fname;
+    private String lname;
     private String id;
     private Course[] classes;
     private double average;
@@ -10,19 +11,20 @@ public class Student {
     private int units_completed;
 
     public Student() {
-        this.setData(null, null, null);
+        this.setData(null, null, null, null);
     }
 
-    public Student(String name, String id, Course[] classes) {
-        this.setData(name, id, classes);
+    public Student(String fname, String lname, String id, Course[] classes) {
+        this.setData(fname, lname, id, classes);
     }
     
     public Student(Student other) {
-        this.setData(other.name, other.id, other.classes.clone());
+        this.setData(other.fname, other.lname, other.id, other.classes.clone());
     }
 
-    public void setData(String name, String id, Course[] classes) {
-        this.name = name == null ? "" : name;
+    public void setData(String fname, String lname, String id, Course[] classes) {
+        this.fname = fname == null ? "" : fname;
+        this.lname = lname == null ? "" : lname;
         this.id = id == null ? "" : id;
         this.classes = classes == null ? new Course[0] : classes;
         calcAvg();
@@ -91,7 +93,9 @@ public class Student {
         this.units_completed = completed;
     }
 
-    public String getName() { return this.name; }
+    public String getFirstName() { return this.fname; }
+    
+    public String getLastName() { return this.lname; }
 
     public String getId() { return this.id; }
 
@@ -105,12 +109,12 @@ public class Student {
 
     @Override
     public String toString() {
-        return String.format("%-20s%-15s%-15d%-20d%-15.2f", this.name, this.id, this.units_taken, this.units_completed, this.average);
+        return String.format("%-20s%-15s%-15d%-20d%-15.2f", this.fname + " " + this.lname, this.id, this.units_taken, this.units_completed, this.average);
     }
     
     public boolean equals(Student other) {
         if (other == this) return true;
-        return other.name.equals(name) && other.id.equals(id) && other.average == average && other.grade.equals(grade) && other.units_taken == units_taken && other.units_completed == units_completed;
+        return other.fname.equals(fname) && other.lname.equals(lname) && other.id.equals(id) && other.average == average && other.grade.equals(grade) && other.units_taken == units_taken && other.units_completed == units_completed;
     }
 
 }
