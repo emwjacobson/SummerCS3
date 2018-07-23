@@ -26,8 +26,10 @@ public class Assignment3 {
     /*
     TODO:
     Add more verbose errors for grades
-    Remove Student
-    Sort Students
+    add below to the print output
+        Total number of Students
+        Total Units completed by all students
+        Total Units taken by all students
      */
     /**
      * @param args the command line arguments

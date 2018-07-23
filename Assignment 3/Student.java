@@ -19,14 +19,14 @@ public class Student {
     }
     
     public Student(Student other) {
-        this.setData(other.fname, other.lname, other.id, other.classes.clone());
+        this.setData(other.fname, other.lname, other.id, other.classes);
     }
 
     public void setData(String fname, String lname, String id, Course[] classes) {
         this.fname = fname == null ? "" : fname;
         this.lname = lname == null ? "" : lname;
         this.id = id == null ? "" : id;
-        this.classes = classes == null ? new Course[0] : classes;
+        this.classes = classes == null ? new Course[0] : classes.clone();
         calcAvg();
         calcGrade();
         calcUnits();
