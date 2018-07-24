@@ -27,9 +27,6 @@ public class Assignment3 {
     TODO:
     Add more verbose errors for grades
     add below to the print output
-        Total number of Students
-        Total Units completed by all students
-        Total Units taken by all students
      */
     /**
      * @param args the command line arguments
@@ -152,14 +149,51 @@ public class Assignment3 {
     }
 
     public static void printSaveStudents() throws IOException {
-        System.out.print("Enter output file name: ");
-        String outname = scnr.next();
-        File outfile = new File(outname);
-        PrintWriter pw = new PrintWriter(outfile);
+        System.out.print("Print or save? (P/S): ");
+        String in = scnr.next();
+        
+        
+        int num_students = 0, cunits = 0, tunits = 0;
+        
+        switch(in) {
+            case "P":
+            case "p":
+                System.out.printf("%-20s%-15s%-15s%-20s%-15s%n", "Name", "ID", "Units Taken", "Units Completed", "GPA");
+                for (Student s : student_list) {
+                    System.out.println(s);
 
-        for (Student s : student_list) {
-            System.out.println(s);
-            pw.println(s);
+                    num_students++;
+                    cunits += s.getUnitsCompleted();
+                    tunits += s.getUnitsTaken();
+                }
+
+                System.out.println("Total Number of Students: " + num_students);
+                System.out.println("Total Units Completed: " + cunits);
+                System.out.println("Total Units Taken: " + tunits);
+                break;
+            case "S":
+            case "s":
+                System.out.print("Enter output file name: ");
+                String outname = scnr.next();
+                File outfile = new File(outname);
+                PrintWriter pw = new PrintWriter(outfile);
+                
+                pw.printf("%-20s%-15s%-15s%-20s%-15s%n", "Name", "ID", "Units Taken", "Units Completed", "GPA");
+                
+                for (Student s : student_list) {
+                    pw.println(s);
+
+                    num_students++;
+                    cunits += s.getUnitsCompleted();
+                    tunits += s.getUnitsTaken();
+                }
+                
+                pw.println("Total Number of Students: " + num_students);
+                pw.println("Total Units Completed: " + cunits);
+                pw.println("Total Units Taken: " + tunits);
+                break;
+            default:
+                System.out.println("Invalid option " + in);
         }
     }
 
