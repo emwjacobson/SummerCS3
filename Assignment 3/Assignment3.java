@@ -26,7 +26,6 @@ public class Assignment3 {
     /*
     TODO:
     Add more verbose errors for grades
-    add below to the print output
      */
     /**
      * @param args the command line arguments
@@ -159,6 +158,7 @@ public class Assignment3 {
             case "P":
             case "p":
                 System.out.printf("%-20s%-15s%-15s%-20s%-15s%n", "Name", "ID", "Units Taken", "Units Completed", "GPA");
+                System.out.println("=====================================================================================");
                 for (Student s : student_list) {
                     System.out.println(s);
 
@@ -179,6 +179,7 @@ public class Assignment3 {
                 PrintWriter pw = new PrintWriter(outfile);
                 
                 pw.printf("%-20s%-15s%-15s%-20s%-15s%n", "Name", "ID", "Units Taken", "Units Completed", "GPA");
+                pw.println("=====================================================================================");
                 
                 for (Student s : student_list) {
                     pw.println(s);
