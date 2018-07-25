@@ -1,0 +1,28 @@
+Smith Jr., Joe
+111-22-3333  3
+Physics I
+B 5
+English 1A
+D 4
+English 1B
+F 4
+Jones, Bill
+111-11-1111  4
+Physics I
+A 5
+Chemistry 1A
+B 5
+Computer Science 1
+A 4
+Chemistry 1 Lab
+B 1
+Holiday, Adam
+111-33-1111 4
+English 1A
+A 4
+English 1B
+A 4
+Computer Science 1
+A 4
+Physics I
+A 5
